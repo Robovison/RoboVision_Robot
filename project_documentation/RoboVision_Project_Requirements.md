@@ -40,6 +40,8 @@ The robot arm is going to have to account for these shapes specifically, with th
 
 - Has to operate on machine-learning logic, not manual programming.
 
+- Must communicate with robot arm and conveyor for coordination.
+
 - ??? - Below this point are things we have to ask the customer that we missed - ???
 
 - What conveyor speed should it work with?
@@ -54,6 +56,9 @@ The robot arm is going to have to account for these shapes specifically, with th
 - Must operate from machine learning logic, not manually programmed logic.
 - Must work with data from the depth camera.
 - Must actuate.
+- Must grab items correctly.
+- Must deposit items correctly.
+- Must hold on to items during moving.
 - ??? - Below this point are things we have to ask the customer that we missed - ???
 - At what speeds SHOULD the robot arm operate?
 - Is there a requirement for how softly it should grasp all objects?
