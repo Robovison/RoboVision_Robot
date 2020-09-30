@@ -37,7 +37,7 @@ This project phase consists of the startup. Here the team primarily gets settled
 
 ### Phase II
 
-This phase will consist of the actual digging into the project. Documentation will continue to be written and updated, code will also start to be written here. At this point, experimentation with the camera hardware should be done and a machine learning algorithm should at the very least be selected and developed. The primary goal of Phase II is to get the cheaper depth camera to work in the way it needs to or otherwise thoroughly prove that this is simply not possible. On-site experimentation is also expected for this phase. The goals can be summarised as follows:
+This phase will consist of the actual digging into the project. Documentation will continue to be written and updated, code will also start to be written here. At this point, experimentation with the camera hardware should be done and a machine learning algorithm should at the very least be selected and developed. The primary goal of Phase II is to get the cheaper D-435 depth camera to work in the way it needs to for the arm system or otherwise thoroughly prove that this is simply not possible(this is done since the robot arm already comes bundled with a very expensive camera, we just need to see if we can do without it). On-site experimentation is also expected for this phase. The goals can be summarised as follows:
 
 - Set up all the required software and hardware in regards to the depth camera portion of the Robovision project. Follow the diagrams that were developed during Phase I or update them accordingly in Phase II.
   - Experiment and research whether or not the D-435 depth camera can fulfil the requirements of the project in practice.
@@ -59,7 +59,7 @@ This phase will be very similar to Phase II in structure, except it will be abou
   - Have it move items from one box to another in the appropriate manner.
 - Continue documenting everything.
 
-Frankly, this phase can be so obscenely difficult and complex that it might not even get started to work on, or if it does - it won't have any hope to be finished by the inexperienced team that is working on this project for the duration of the given semester. It can take anywhere between a month to half a year. 
+Frankly, this phase can be so obscenely difficult and complex that it might not even get started to be worked on, or if it does - it won't have any hope to be finished by the inexperienced team that is working on this project for the duration of the given semester. It can take anywhere between a month to half a year or even more. 
 
 ### Phase IV
 
