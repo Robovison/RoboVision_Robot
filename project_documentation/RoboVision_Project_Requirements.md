@@ -12,7 +12,7 @@ ROS - Robot Operating System
 
 ### Scope
 
-Scope goes as follows - object recognition software for depth camera, actuation for robot arm, actuation of the conveyor belt. As this is more so a proof of concept project than anything else, efficient documentation and at least one fully functioning component are the core of the end-goal. Outside of working with ROS to test and develop the hardware that we will be working with, everything else is outside of the scope of the project. The camera is supposed to recognize a set of specific objects, as such:
+Scope goes as follows - object recognition software for depth camera, actuation for robot arm. As this is more so a proof of concept project than anything else, efficient documentation and at least one fully functioning component are the core of the end-goal. Outside of working with ROS to test and develop the hardware that we will be working with, everything else is outside of the scope of the project. The camera is supposed to recognize a set of specific objects, as such:
 
 ![](./documentation_images/Requirements_1.png)
 
@@ -44,11 +44,11 @@ The robot arm is going to have to account for these shapes specifically, with th
 
 - Has to operate on machine-learning logic, not manual programming.
 
-- Must communicate with robot arm and conveyor for coordination.
+- Must communicate with robot arm for coordination.
 
-- Must work with maximum efficient conveyor and robot arm speed.
+- Must work with maximum efficient robot arm speed.
 
-  - This must be calculated through taking the maximum efficient work-speed of the robot arm and the maximum efficient work-frame-rate of the camera. Of course, also the conveyor speed should be considered.
+  - This must be calculated through taking the maximum efficient work-speed of the robot arm and the maximum efficient work-frame-rate of the camera.
   
   
 
@@ -73,19 +73,8 @@ The robot arm is going to have to account for these shapes specifically, with th
   - Must not accelerate carried objects to projectile speeds when depositing.
   - Must not release from height that could threaten the structural stability of the carried object.
   - Must deposit items within a designated area and not outside of it.
-
+- Must stack items in an organised fashion, not just pile them in the box.
+  
 - Must hold on to items during moving without incident of dropping.(no butter fingers)
-
-### Conveyors
-
-- Must work in tandem with the camera and arm.
-  - Must move and stop when prompted to by the camera/external sensors.
-  - Must not cause objects on conveyor to fly off due to inertia and incorrect speeding up and speeding down.
-- Must be able to dynamically slowdown if errors or item overload(for instance, way too many objects are put on the conveyor at once, we want it to slow down and account for this.)
-- Must actuate to transport items.
-
-
-
-
 
 ________________________________________________________________________________________________________________________________________________________END
