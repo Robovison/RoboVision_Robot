@@ -10,6 +10,9 @@ class ImageRawSubscriber{
 
   ros::NodeHandle n;
 
+  /**
+   * This method subscribes to the /camera/color/image_raw topic 
+   */
   public:
     void subscribe(){
       ros::Subscriber sub = n.subscribe("/camera/color/image_raw", 1000, &ImageRawSubscriber::callbackImagePtr, this);
@@ -17,16 +20,17 @@ class ImageRawSubscriber{
       ros::spin();
     }
 
-  void callbackImagePtr(const sensor_msgs::ImageConstPtr& msg)
-  {
+  /**
+   * Callback method for subscriber
+   */
+  void callbackImagePtr(const sensor_msgs::ImageConstPtr& msg){
     //TODO stuff here with the data received.(the data is a stream of uint8[] data)
     ROS_INFO("I heard: [%ud]", msg->data);
   }
   
 };
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
   ros::init(argc, argv, "robovision_robot");
   ImageRawSubscriber imgRawSubscriber;
   imgRawSubscriber.subscribe();
