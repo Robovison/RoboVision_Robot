@@ -11,6 +11,7 @@ There might be errors you could encouter or different issues that are hardware r
 **Pay attention to the udev rule**
 
 Find the camera device node path and get the correct 'looking at parent device' id (idProduct, idVendor) attributes in order to create a new udev rule.
+
 ![Screenshot_2020-12-16_at_16.13.33](/Users/dianarusu/Downloads/Export-739ad463-4d0d-45b0-b282-75d448dcbed7/Robovision/Screenshot_2020-12-16_at_16.13.33.png)
 
 
