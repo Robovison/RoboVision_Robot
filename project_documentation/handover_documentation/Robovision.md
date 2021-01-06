@@ -23,6 +23,7 @@
   - [Training a Mask RCNN model](#training-a-mask-rcnn-model)
 
 
+
 ## Project description
 
 This is a project, funded, supervised and assisted by GTL(GreenTech Labs) and Fontys HS in Venlo. The purpose of the project is to use ROS(Robot Operating System) to develop a system that uses conveyors, a robot arm and a depth camera to establish a working robot-object-sorting automated system.
