@@ -21,15 +21,7 @@
     - [YOLO — You Only Look Once](#yolo--you-only-look-once)
     - [Our decision](#our-decision)
   - [Training a Mask RCNN model](#training-a-mask-rcnn-model)
-<details>
-  <summary>Click to expand!</summary>
-  
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
+
 
 
 ## Project description
