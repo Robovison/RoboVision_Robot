@@ -231,7 +231,7 @@ The crate holds the items that the robot arm needs to pick and transfer in anoth
 
 In order to implement object recognition, we looked at the different approaches that there are available.
 
-#### Object Analytics in ROS
+### Object Analytics in ROS
 
 From the first research session our first attempt was to use ros_object_analytics. It is a ROS wrapper developed by Intel, which can be used for real-time object detection, localization and tracking. https://github.com/intel/ros_object_analytics
 
@@ -243,7 +243,7 @@ Dependencies:
 - https://github.com/intel/ros_openvino_toolkit
 - https://github.com/01org/caffe/tree/inference-optimize
 
-#### OpenCV library
+### OpenCV library
 
 After research on what technology to use for object recognition, we tried to find a way to implement it ourselves. The library we tried to use for this was OpenCV, which is is aimed for real-time computer vision and is broadly used for object detection.
 
@@ -266,6 +266,8 @@ Also, we made use of the openCV and created a basic image converter by subscribi
 https://github.com/Robovison/RoboVision_Robot/blob/test/Python-Image-Converter/src/ImageSubcriber.py
 
 After some time and some more experiencing with OpenCV, the team realized that a machine learning algorithm is needed in order to build and train a model to recognize different types of items.
+### OpenCV with newer GPUs (3080)
+Our team experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found here:
 
 ## Machine learning algorithms
 
