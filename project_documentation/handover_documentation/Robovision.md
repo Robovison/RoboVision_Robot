@@ -324,5 +324,6 @@ The other major framework that was considered by our team was YOLO, which is ano
 
 ## Training a Mask RCNN model
 
-To use the model to recognize different types of objects, it has to be trained so it can learn the objects. For this a dataset with different images with the same object, but from different point of views. In order to create the dataset we ...
+To use the model to recognize different types of objects, it has to be trained so it can learn the objects. For this we need a dataset with different images with the same object, but from different point of views. These images have to be annotated, basically draw out every object inside the image and label it. In order to annotate the dataset we used `https://www.makesense.ai/` and `https://gitlab.com/vgg/via`, both of them work with the same outputed structure, a JSON file with the labels, coordinates and other data. This JSON will be fed, along with the images, in our Mask RCNN algorithm to train the model. In our experiments we used coco weights to train and try out the algorithm. A good machine is needed for the training process, a good GPU helps a lot, be aware to setup the tensorflow to use the GPU! 
+Training a model can also be done in the cloud. Our research found that Amazon Web Services, Google Cloud and Floyd are companies that offer cloud training for additional costs at a fairly high speed.
 
