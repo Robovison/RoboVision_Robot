@@ -12,7 +12,7 @@ There might be errors you could encouter or different issues that are hardware r
 
 Find the camera device node path and get the correct 'looking at parent device' id (idProduct, idVendor) attributes in order to create a new udev rule.
 
-![Screenshot_2020-12-16_at_16.13.33](/Users/dianarusu/Downloads/Export-739ad463-4d0d-45b0-b282-75d448dcbed7/Robovision/Screenshot_2020-12-16_at_16.13.33.png)
+![udev-file](Robovision/udev-file.png)
 
 
 
@@ -41,7 +41,7 @@ If you choose to work with image-view, you also have to install it on your machi
 
 In case you have troubles connecting to your laptop camera, as seen in the snippet below, you have to grant the required permissions.
 
-![MicrosoftTeams-image_(1)](/Users/dianarusu/Downloads/Export-739ad463-4d0d-45b0-b282-75d448dcbed7/Robovision 4e46e79dbee24f289801fa1b924e8f7c/MicrosoftTeams-image_(1).png)
+![camera permission error](Robovision/camera-permission-error.png)
 
 In order to fix this problem you need to identify the D435 camera by the following command `ls /dev/video*`. After you identified the new video device, you need to give it permission in order for ROS to be able to find and use the laptop camera. You will most probably need to repeat the same step also for the D435 camera, to grant write permission without altering user and group permissions. 
 

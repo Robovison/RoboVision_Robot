@@ -21,7 +21,7 @@ The point of the Robovision project, succinctly speaking, is to get a robot arm 
 - Document the entirety of this project(code, workflow diagrams, etc.) for later continuation.
 - Learn and experience programming with ROS
 
-[Screenshot 2020-09-23 at 10.33.34](Robovision/Screenshot 2020-09-23 at 10.33.34.png)
+![robot-arm](Robovision/robot.png)
 
 ## Set up phase
 
@@ -114,7 +114,7 @@ CMake Error at realsense-ros/realsense2_camera/CMakeLists.txt:47 (message):
 
 At the end, you should be able to see the depth camera image using the rviz tool.
 
-![WhatsApp Image 2021-01-04 at 16.54.58](Robovision/WhatsApp Image 2021-01-04 at 16.54.58.jpeg)
+![depth camera connected](Robovision/rviz-depth-camera.jpeg)
 
 
 
@@ -188,7 +188,9 @@ The reason “Fast R-CNN” is faster than R-CNN is because you don’t have to 
 
 Similar to Fast R-CNN, the image is provided as an input to a convolutional network which provides a convolutional feature map. Instead of using selective search algorithm on the feature map to identify the region proposals, a separate network is used to predict the region proposals.
 
-Faster RCNN do detect small objects well since it has nine anchors in a single grid, however it fails to do real-time detection with its two step architecture.![machine-learning-alg-comparison](/Users/dianarusu/Downloads/Export-739ad463-4d0d-45b0-b282-75d448dcbed7/Robovision/machine-learning-alg-comparison.png)
+Faster RCNN do detect small objects well since it has nine anchors in a single grid, however it fails to do real-time detection with its two step architecture.
+
+![machine-learning-alg-comparison](Robovision/machine-learning-alg-comparison.png)
 
 ### Mask RCNN
 
