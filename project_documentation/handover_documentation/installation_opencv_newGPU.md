@@ -19,39 +19,39 @@ The version number can be found by doing a ls <name>.so* as it will list all the
 sudo rm <name>.so && sudo rm <name>.so.<major_version> && sudo ln -s <name>.so.<long_version> <name>.so.<major_version> && sudo ln -s <name>.so.<major_version> <name>.so
 
 After fixing the symlinks, can also be used to see which ones are broken:
-sudo ldconfig
-sudo reboot
+ sudo ldconfig
+ sudo reboot
 
 Follow the installation instructions for CuDNN and install the sample.
 If this shows that there are missing packages, install both the runtime library and the development library for your CuDNN version.
 Go to section 2.4 to see how to test the sample, if this worked, you have a working installation of CuDNN.
 
 After installing Cuda build the "deviceQuery" sample, I built all samples but that sample is very useful. It shows information about the CUDA enabled device that you are using.
-~/NVIDIA_CUDA-11.0_Samples/bin/x86_64/linux/release/deviceQuery
+   ~/NVIDIA_CUDA-11.0_Samples/bin/x86_64/linux/release/deviceQuery
 
 Example important output:
 ~/NVIDIA_CUDA-11.0_Samples/bin/x86_64/linux/release/deviceQuery Starting...
 
- CUDA Device Query (Runtime API) version (CUDART static linking)
+    CUDA Device Query (Runtime API) version (CUDART static linking)
 
-Detected 1 CUDA Capable device(s)
+   Detected 1 CUDA Capable device(s)
 
-Device 0: "GeForce RTX 3080"
-  CUDA Driver Version / Runtime Version          11.1 / 11.0
-  CUDA Capability Major/Minor version number:    8.6
-  Total amount of global memory:                 10015 MBytes (10501423104 bytes)
+   Device 0: "GeForce RTX 3080"
+     CUDA Driver Version / Runtime Version          11.1 / 11.0
+     CUDA Capability Major/Minor version number:    8.6
+     Total amount of global memory:                 10015 MBytes (10501423104 bytes)
 
-CUDA Capability Major version is what we would use later to build openCV, if it works, otherwise look for other compatible computational numbers from https://en.wikipedia.org/wiki/CUDA#GPUs_supported
+   CUDA Capability Major version is what we would use later to build openCV, if it works, otherwise look for other compatible computational numbers from https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 
-Steps OpenCV:
-mkdir opencv
-git clone https://github.com/opencv/opencv.git
-git clone https://github.com/opencv/opencv_contrib.git
-cd opencv
-git checkout <check the latest version in the releases tab (https://github.com/opencv/opencv/releases)
-cd ../opencv_contrib
-git checkout <check the latest version in the releases tab (https://github.com/opencv/opencv/releases)
-mkdir build && cd build
+Steps OpenCV: \
+mkdir opencv \
+git clone https://github.com/opencv/opencv.git \
+git clone https://github.com/opencv/opencv_contrib.git \
+cd opencv \
+git checkout <check the latest version in the releases tab (https://github.com/opencv/opencv/releases) \
+cd ../opencv_contrib \
+git checkout <check the latest version in the releases tab (https://github.com/opencv/opencv/releases) \
+mkdir build && cd build \
 
 GUI Explnation for if the Commandline does not work (https://www.youtube.com/watch?v=tjXkW0-4gME)
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -76,15 +76,15 @@ make -j<number of cores>
 sudo make install
 sudo ldconfig
 
-Check if the OpenCV so file is in the correct place: 
-ls -l /usr/local/lib/python3.8/site-packages/cv2/python-3.8
+Check if the OpenCV so file is in the correct place:  \
+ls -l /usr/local/lib/python3.8/site-packages/cv2/python-3.8 \
 
-ln -s /usr/local/lib/python3.8/site-packages/cv2/python-3.8/<file name of so file> <Python Virtual Environment Path>/lib/python3.8/site-packages/cv2.so
+ln -s /usr/local/lib/python3.8/site-packages/cv2/python-3.8/<file name of so file> <Python Virtual Environment Path>/lib/python3.8/site-packages/cv2.so \
 
-To verify the installation:
-import cv2
-count = cv2.cuda.getCudaEnabledDeviceCount()
-print(count)
+To verify the installation: \
+`import cv2 \
+count = cv2.cuda.getCudaEnabledDeviceCount() \
+print(count) \`
 
 This will print out if there are Cuda enabled devices, you will also see when trying to use OpenCV's dnn module that it is not saying that it is using the CPU because no GPU was found.
 
