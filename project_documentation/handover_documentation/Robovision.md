@@ -12,6 +12,7 @@
   - [Object recognition](#object-recognition)
       - [Object Analytics in ROS](#object-analytics-in-ros)
       - [OpenCV library](#opencv-library)
+      - [OpenCV with newer GPUs (3080)](#opencv-with-newer-gpus-3080)
   - [Machine learning algorithms](#machine-learning-algorithms)
     - [CNN](#cnn)
     - [R-CNN](#r-cnn)
@@ -266,8 +267,9 @@ Also, we made use of the openCV and created a basic image converter by subscribi
 https://github.com/Robovison/RoboVision_Robot/blob/test/Python-Image-Converter/src/ImageSubcriber.py
 
 After some time and some more experiencing with OpenCV, the team realized that a machine learning algorithm is needed in order to build and train a model to recognize different types of items.
+
 ### OpenCV with newer GPUs (3080)
-Our team experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found here:
+Our team experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found [here](https://github.com/Robovison/RoboVision_Robot/blob/documentation/handover/project_documentation/handover_documentation/installation_opencv_newGPU.md):
 
 ## Machine learning algorithms
 
