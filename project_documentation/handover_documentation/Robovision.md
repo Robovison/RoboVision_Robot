@@ -1,7 +1,26 @@
 # Robovision project
 
-[TOC]
-
+- [Robovision project](#robovision-project)
+  - [Project description](#project-description)
+  - [Project goal](#project-goal)
+  - [Set up phase](#set-up-phase)
+    - [Set up the working environment](#set-up-the-working-environment)
+    - [Learn and experience programming with ROS](#learn-and-experience-programming-with-ros)
+    - [Working with D435 camera](#working-with-d435-camera)
+        - [Set up the RealSense D435 camera](#set-up-the-realsense-d435-camera)
+        - [Subscriber node to the RealSense D435 camera](#subscriber-node-to-the-realsense-d435-camera)
+  - [Object recognition](#object-recognition)
+      - [Object Analytics in ROS](#object-analytics-in-ros)
+      - [OpenCV library](#opencv-library)
+  - [Machine learning algorithms](#machine-learning-algorithms)
+    - [CNN](#cnn)
+    - [R-CNN](#r-cnn)
+    - [Fast R-CNN](#fast-r-cnn)
+    - [Faster R-CNN](#faster-r-cnn)
+    - [Mask RCNN](#mask-rcnn)
+    - [YOLO — You Only Look Once](#yolo--you-only-look-once)
+    - [Our decision](#our-decision)
+  - [Training a Mask RCNN model](#training-a-mask-rcnn-model)
 
 
 ## Project description
