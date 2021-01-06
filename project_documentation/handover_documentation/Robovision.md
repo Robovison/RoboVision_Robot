@@ -269,7 +269,7 @@ https://github.com/Robovison/RoboVision_Robot/blob/test/Python-Image-Converter/s
 After some time and some more experiencing with OpenCV, the team realized that a machine learning algorithm is needed in order to build and train a model to recognize different types of items.
 
 ### OpenCV with newer GPUs (3080)
-Our team experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found [here](https://github.com/Robovison/RoboVision_Robot/blob/documentation/handover/project_documentation/handover_documentation/installation_opencv_newGPU.md):
+Our team experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found [here](https://github.com/Robovison/RoboVision_Robot/blob/documentation/handover/project_documentation/handover_documentation/installation_opencv_newGPU.md).
 
 ## Machine learning algorithms
 
