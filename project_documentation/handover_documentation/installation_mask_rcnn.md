@@ -9,7 +9,8 @@ The creators require Python 3.4, but in our case Python 3.7 was used and it work
 2. Install dependencies
 
    `pip install -r requirements.txt`
-
+  
+   
 3. Run setup from the repository root directory
 
 ```jsx
@@ -19,7 +20,7 @@ sudo python setup.py install
 
 4. Download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
 
-5. (Optional) To train or test on MS COCO install pycocotools from [here](https://github.com/waleedka/coco). There are forks of the original pycocotools with fixes for Python3 and Windows (the official repo doesn't seem to be active anymore).
+5. (Optional) To train or test on MS COCO install pycocotools from [here](https://github.com/waleedka/coco). There are forks of the original pycocotools with fixes for Python3 and Windows (the official repo doesn't seem to be active anymore). Make sure to follow the installation steps from there. 
 
 6. (Optional) Install jupyter notebook to check if the installation was done right. Run the demo.ipynb and check if there are any errors showing.
 
@@ -58,8 +59,10 @@ You might solve this by:
 - Execute `sudo python3 get_pip.py`
 - Install numpy with python3.x, where x < 8 `pip3 install numpy`
 
-2. When running the demo.ipynb (`jupyter notebook samples/demo.ipynb`)
+If there is an error regarding "no module found _lzma" => you have to downgrade scikit-image to 0.16.2 with `$ python3.7 -m pip install scikit-image==0.16.2`
 
+2. When running the demo.ipynb (`jupyter notebook samples/demo.ipynb`)
+   
    ```
    ImportError                               Traceback (most recent call last)
    <ipython-input-1-ebe7095df7bb> in <module>
@@ -79,8 +82,15 @@ You might solve this by:
    ImportError: No module named 'pycocotools'
    ```
 
-   You should install pycocotools. `pip3 install pycocotools`
-
-   It works only with specific version so install `pip3 install tensorflow==1.14` and `pip3 install keras==2.3.1` of the specified version , otherwise you will not be able to run it.
+   You should return to step 5 in installation phase and install pycocotools. `pip3 install pycocotools`.
+   Make sure to follow the installation steps from the github repo. Cython might be needed in one of those steps, it can be installed with `pip install cython`.
+   If there are any persistent errors with missing packages that you know you installed, check the PYTHONPATH, you might need to manually change the PYTHONPATH environment variable.
+   
+   For issues regarding tensorflow such as: "module has no attribute log" simply search the file where the error is and replace tf.log with tf.math.log !
+   
+   It works only with specific version of Tensorflow and Keras. We used tf==1.14 and keras==2.3.1 `pip3 install tensorflow==1.14` and `pip3 install keras==2.3.1` of the specified version , otherwise you will not be able to run it.
+   
+   If there is any issue with AttributeError: 'str' object has no attribute 'decode' simply delete de decoding part of the line. This might have something to do with keras version. 
+   
 
  
