@@ -83,91 +83,93 @@ As a team we decided to break down the learning into 3 steps, each of them had t
   (ROS tutorial: http://wiki.ros.org/ROS/Tutorials/WritingServiceClient(python))
 
 - Make a node that does a basic image recognition with the help of the laptop camera
-  **Connecting laptop camera**
-  To make the connection with laptop camera, using ROS, we made use of the following tutorial. https://msadowski.github.io/ros-web-tutorial-pt2-cameras/
-
-  There might be errors you could encouter or different issues that are hardware related. Below, we have listed the problems we encountered and how we managed to solve them.
-        
-  <details>
-  <summary>What can go wrong?</summary>
   
-    **Pay attention to the udev rule**
-
-    Find the camera device node path and get the correct 'looking at parent device' id (idProduct, idVendor) attributes in order to create a new udev rule.
-
-    ![udev-file](Robovision/udev-file.png)
-
-
-
-    **Creating my_camera package**
-
-    When you want to create the `my_camera` package, the syntax used in the tutorial is outdated. The following lines show the wright syntax. Also, the new package creates a dependency to the `libuvc-camera`, if you do not have it installed already, you should do it beforehand.
-
-    ```
-    # install libuvc-camera
-    sudo apt-get install ros-kinetic-libuvc-camera
-    # WRONG SYNTAX 
-    catkin create pkg my_camera --catkin-deps libuvc_camera
-    # CORECT SYNTAX catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
-    catkin_create_pkg my_camera libuvc_camera
-    source devel/setup.bash
-    catkin_make
-    ```
-
-    **[rospack] Error: package 'rqt_image_view' not found** 
-
-    If you choose to work with image-view, you also have to install it on your machine.
-
-    ``sudo apt-get install ros-kinetic-image-view``
-
-    **Permission required to access the camera**
-
-    In case you have troubles connecting to your laptop camera, as seen in the snippet below, you have to grant the required permissions.
-
-    ![camera permission error](Robovision/camera-permission-error.png)
-
-    In order to fix this problem you need to identify the D435 camera by the following command `ls /dev/video*`. After you identified the new video device, you need to give it permission in order for ROS to be able to find and use the laptop camera. You will most probably need to repeat the same step also for the D435 camera, to grant write permission without altering user and group permissions. 
-
-    `sudo chmod o+w /dev/bus/usb/00X/00Y`
-
-  </details>
-        
-**Basic object recognition with the laptop camera**
-
-The following tutorial was very useful in setting up a basic image recognition and play around with it. Do not forget to select /usb_cam/image_raw to get the  https://sudonull.com/post/14732-Detection-and-recognition-of-objects-from-the-camera-in-ROS-using-the-package-find_object_2d
-        
-<details>
-<summary>What can go wrong?</summary>
   
-  **E: Unable to locate package ros-kinetic-find-object-2d**
+    **Connecting laptop camera**
+    To make the connection with laptop camera, using ROS, we made use of the following tutorial. https://msadowski.github.io/ros-web-tutorial-pt2-cameras/
 
-  You need to set up your sources.list and keys to get software from [packages.ros.org](http://packages.ros.org/). Following the instructions, you should be able to make it work.
+    There might be errors you could encouter or different issues that are hardware related. Below, we have listed the problems we encountered and how we managed to solve them.
+            
+    <details>
+    <summary>What can go wrong?</summary>
+      
+      **Pay attention to the udev rule**
 
-  ```jsx
-  sudo sh -c 'echo "deb <http://packages.ros.org/ros/ubuntu> $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-  sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-  sudo apt-get update
-  sudo apt-get install ros-kinetic-desktop-full
-  ```
+      Find the camera device node path and get the correct 'looking at parent device' id (idProduct, idVendor) attributes in order to create a new udev rule.
 
-  **E: Unable to correct problems, you have held broken packages. (cause: broken catkin)**
+      ![udev-file](Robovision/udev-file.png)
 
-  The following packages have unmet dependencies: catkin : Depends: python-catkin-pkg but it is not going to be installed E: Unable to correct problems, you have held broken packages.
 
-  ```jsx
-  sudo apt-get install ros-kinetic-catkin
-  source /opt/ros/kinetic/setup.bash //source the ROS environment
-  catkin_make
-  ```
 
-  **[rospack] Error: package 'uvc_camera' not found**
+      **Creating my_camera package**
 
-  Install the uvc-camera package for your ros distribution
+      When you want to create the `my_camera` package, the syntax used in the tutorial is outdated. The following lines show the wright syntax. Also, the new package creates a dependency to the `libuvc-camera`, if you do not have it installed already, you should do it beforehand.
 
-  ```jsx
-  sudo apt-get install ros-kinetic-uvc-camera
-  ```
-</details>
+      ```
+      # install libuvc-camera
+      sudo apt-get install ros-kinetic-libuvc-camera
+      # WRONG SYNTAX 
+      catkin create pkg my_camera --catkin-deps libuvc_camera
+      # CORECT SYNTAX catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
+      catkin_create_pkg my_camera libuvc_camera
+      source devel/setup.bash
+      catkin_make
+      ```
+
+      **[rospack] Error: package 'rqt_image_view' not found** 
+
+      If you choose to work with image-view, you also have to install it on your machine.
+
+      ``sudo apt-get install ros-kinetic-image-view``
+
+      **Permission required to access the camera**
+
+      In case you have troubles connecting to your laptop camera, as seen in the snippet below, you have to grant the required permissions.
+
+      ![camera permission error](Robovision/camera-permission-error.png)
+
+      In order to fix this problem you need to identify the D435 camera by the following command `ls /dev/video*`. After you identified the new video device, you need to give it permission in order for ROS to be able to find and use the laptop camera. You will most probably need to repeat the same step also for the D435 camera, to grant write permission without altering user and group permissions. 
+
+      `sudo chmod o+w /dev/bus/usb/00X/00Y`
+
+    </details>
+            
+    **Basic object recognition with the laptop camera**
+
+    The following tutorial was very useful in setting up a basic image recognition and play around with it. Do not forget to select /usb_cam/image_raw to get the  https://sudonull.com/post/14732-Detection-and-recognition-of-objects-from-the-camera-in-ROS-using-the-package-find_object_2d
+            
+    <details>
+    <summary>What can go wrong?</summary>
+      
+      **E: Unable to locate package ros-kinetic-find-object-2d**
+
+      You need to set up your sources.list and keys to get software from [packages.ros.org](http://packages.ros.org/). Following the instructions, you should be able to make it work.
+
+      ```jsx
+      sudo sh -c 'echo "deb <http://packages.ros.org/ros/ubuntu> $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+      sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+      sudo apt-get update
+      sudo apt-get install ros-kinetic-desktop-full
+      ```
+
+      **E: Unable to correct problems, you have held broken packages. (cause: broken catkin)**
+
+      The following packages have unmet dependencies: catkin : Depends: python-catkin-pkg but it is not going to be installed E: Unable to correct problems, you have held broken packages.
+
+      ```jsx
+      sudo apt-get install ros-kinetic-catkin
+      source /opt/ros/kinetic/setup.bash //source the ROS environment
+      catkin_make
+      ```
+
+      **[rospack] Error: package 'uvc_camera' not found**
+
+      Install the uvc-camera package for your ros distribution
+
+      ```jsx
+      sudo apt-get install ros-kinetic-uvc-camera
+      ```
+    </details>
 
 ### Working with D435 camera
 
