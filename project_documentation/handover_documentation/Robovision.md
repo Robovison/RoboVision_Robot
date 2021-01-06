@@ -92,8 +92,7 @@ As a team we decided to break down the learning into 3 steps, each of them had t
             
     <details>
     <summary>What can go wrong?</summary>
-    -------------------------------------
-    
+
     **Pay attention to the udev rule**
 
     Find the camera device node path and get the correct 'looking at parent device' id (idProduct, idVendor) attributes in order to create a new udev rule.
@@ -141,7 +140,7 @@ As a team we decided to break down the learning into 3 steps, each of them had t
             
     <details>
     <summary>What can go wrong?</summary>
-    -------------------------------------
+    
     **E: Unable to locate package ros-kinetic-find-object-2d**
 
     You need to set up your sources.list and keys to get software from [packages.ros.org](http://packages.ros.org/). Following the instructions, you should be able to make it work.
