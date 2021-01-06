@@ -41,7 +41,16 @@ Installation instructions can be found here: http://wiki.ros.org/kinetic/Install
 
 ### Learn and experience programming with ROS
 
-Our team started reading and learning how the new operating system is working by following the official tutorials provided by ROS. (ROS tutorials: http://wiki.ros.org/ROS/Tutorials) Each member, individually, had the responsibility to create their own environment and share the knowledge about their progress. As a team we decided to break down the learning into 3 steps, each of them had the intent to help getting a better understanding of how we can use ROS.
+Our team started reading and learning how the new operating system is working by following the official tutorials provided by ROS. (ROS tutorials: [http://wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)) Each member, individually, had the responsibility to create their own environment and share the knowledge about their progress. 
+
+After choosing ROS Kinetic as our distribution we tried to create a bootable stick, where Ubuntu 16.04 and ROS Kinetic would be installed, for portability purposes. Unfortunately, we didn't find a way to create a bootable stick with persistence memory, so every time the bootable stick was disconnected all the libraries of ROS and other packages were lost. Therefore, we dropped the idea of creating a bootable stick and vote for installing on our local machines. Despite the fact that all members were using a brand new Ubuntu system, more than often problems appears to be different for each of us.
+
+Following the ROS installation from their official site, the overall installation was pretty straight forward, copying and pasting commands into the terminal. The installation took quite long and required a significant amount of memory, consisting of a variety of libraries and frameworks. Despite the fact that the official installation seems to be straight forward, it was pretty ambiguous and leave some important details and questions unanswered.
+
+One problem was to create a ROS environment, where different dependencies can be installed or modify afterwards, so missing one dependency or reading one from a wrong place was a challenge. Following step by step the tutorial, all of the team members had problems setting this environment for the first time.
+Testing this environment took us more than expected after the ROS environment was set up correctly accordingly to the official installation and other third party websites, testing the camera itself was a challenge. The first thing we did was to install the D435 software, from Intel, and try to see what the camera can do. After being able to manipulate the image and see that this camera has a 2D image and a 3D image, from where we can extract important information(i.e. width, height, the distance between 2 objects, etc.).
+
+As a team we decided to break down the learning into 3 steps, each of them had the intent to help to get a better understanding of how we can use ROS.
 
 - Make a node that can send out messages
 
