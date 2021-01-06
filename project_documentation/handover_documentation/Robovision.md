@@ -92,7 +92,8 @@ As a team we decided to break down the learning into 3 steps, each of them had t
             
     <details>
     <summary>What can go wrong?</summary>
-      
+    -------------------------------------
+    
     **Pay attention to the udev rule**
 
     Find the camera device node path and get the correct 'looking at parent device' id (idProduct, idVendor) attributes in order to create a new udev rule.
@@ -140,35 +141,35 @@ As a team we decided to break down the learning into 3 steps, each of them had t
             
     <details>
     <summary>What can go wrong?</summary>
-      
-      **E: Unable to locate package ros-kinetic-find-object-2d**
+    -------------------------------------
+    **E: Unable to locate package ros-kinetic-find-object-2d**
 
-      You need to set up your sources.list and keys to get software from [packages.ros.org](http://packages.ros.org/). Following the instructions, you should be able to make it work.
+    You need to set up your sources.list and keys to get software from [packages.ros.org](http://packages.ros.org/). Following the instructions, you should be able to make it work.
 
-      ```jsx
-      sudo sh -c 'echo "deb <http://packages.ros.org/ros/ubuntu> $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-      sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-      sudo apt-get update
-      sudo apt-get install ros-kinetic-desktop-full
-      ```
+    ```jsx
+    sudo sh -c 'echo "deb <http://packages.ros.org/ros/ubuntu> $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+    sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+    sudo apt-get update
+    sudo apt-get install ros-kinetic-desktop-full
+    ```
 
-      **E: Unable to correct problems, you have held broken packages. (cause: broken catkin)**
+    **E: Unable to correct problems, you have held broken packages. (cause: broken catkin)**
 
-      The following packages have unmet dependencies: catkin : Depends: python-catkin-pkg but it is not going to be installed E: Unable to correct problems, you have held broken packages.
+    The following packages have unmet dependencies: catkin : Depends: python-catkin-pkg but it is not going to be installed E: Unable to correct problems, you have held broken packages.
 
-      ```jsx
-      sudo apt-get install ros-kinetic-catkin
-      source /opt/ros/kinetic/setup.bash //source the ROS environment
-      catkin_make
-      ```
+    ```jsx
+    sudo apt-get install ros-kinetic-catkin
+    source /opt/ros/kinetic/setup.bash //source the ROS environment
+    catkin_make
+    ```
 
-      **[rospack] Error: package 'uvc_camera' not found**
+    **[rospack] Error: package 'uvc_camera' not found**
 
-      Install the uvc-camera package for your ros distribution
+    Install the uvc-camera package for your ros distribution
 
-      ```jsx
-      sudo apt-get install ros-kinetic-uvc-camera
-      ```
+    ```jsx
+    sudo apt-get install ros-kinetic-uvc-camera
+    ```
     </details>
 
 ### Working with D435 camera
