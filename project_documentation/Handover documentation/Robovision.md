@@ -21,7 +21,7 @@ The point of the Robovision project, succinctly speaking, is to get a robot arm 
 - Document the entirety of this project(code, workflow diagrams, etc.) for later continuation.
 - Learn and experience programming with ROS
 
-![Screenshot 2020-09-23 at 10.33.34](Robovision/Screenshot 2020-09-23 at 10.33.34.png)
+[Screenshot 2020-09-23 at 10.33.34](Robovision/Screenshot 2020-09-23 at 10.33.34.png)
 
 ## Set up phase
 
@@ -114,7 +114,7 @@ CMake Error at realsense-ros/realsense2_camera/CMakeLists.txt:47 (message):
 
 At the end, you should be able to see the depth camera image using the rviz tool.
 
-![WhatsApp Image 2021-01-04 at 16.54.58](/Users/dianarusu/Downloads/Export-739ad463-4d0d-45b0-b282-75d448dcbed7/Robovision/WhatsApp Image 2021-01-04 at 16.54.58.jpeg)
+![WhatsApp Image 2021-01-04 at 16.54.58](Robovision/WhatsApp Image 2021-01-04 at 16.54.58.jpeg)
 
 
 
