@@ -337,7 +337,7 @@ The other major framework that was considered by our team was YOLO, which is ano
 
 To use the model to recognize different types of objects, it has to be trained so it can learn the objects. For this we need a dataset with different images with the same object, but from different point of views. These images have to be annotated, basically draw out every object inside the image and label it. In order to annotate the dataset we used `https://www.makesense.ai/` and `https://gitlab.com/vgg/via`, both of them work with the same output structure, a JSON file with the labels, coordinates and other data. This JSON will be fed, along with the images, in our Mask R-CNN algorithm to train the model. 
 The image below shows a recognzied object with the output mask. 
-![Mask on 3D shape](Robovision/mask_3Dshape.jpeg)
+![Mask on 3D shape](Robovision/mask_3dshape.jpeg)
 
 In our experiments we used coco weights to train and try out the algorithm. A good machine is needed for the training process, a good GPU helps a lot, be aware to setup the tensorflow to use the GPU! A useful tutorial explaining how the mask R-CNN works and how to create and train your dataset, can be found [here](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46).
 
