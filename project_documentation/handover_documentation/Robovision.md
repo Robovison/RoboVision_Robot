@@ -8,20 +8,20 @@
     - [Learn and experience programming with ROS](#learn-and-experience-programming-with-ros)
     - [Working with D435 camera](#working-with-d435-camera)
         - [Set up the RealSense D435 camera](#set-up-the-realsense-d435-camera)
-        - [Subscriber node to the RealSense D435 camera](#subscriber-node-to-the-realsense-d435-camera)
+    - [Subscriber node to the RealSense D435 camera](#subscriber-node-to-the-realsense-d435-camera)
   - [Object recognition](#object-recognition)
-      - [Object Analytics in ROS](#object-analytics-in-ros)
-      - [OpenCV library](#opencv-library)
-      - [OpenCV with newer GPUs (3080)](#opencv-with-newer-gpus-3080)
+    - [Object Analytics in ROS](#object-analytics-in-ros)
+    - [OpenCV library](#opencv-library)
+    - [OpenCV with newer GPUs (3080)](#opencv-with-newer-gpus-3080)
   - [Machine learning algorithms](#machine-learning-algorithms)
     - [CNN](#cnn)
     - [R-CNN](#r-cnn)
     - [Fast R-CNN](#fast-r-cnn)
     - [Faster R-CNN](#faster-r-cnn)
-    - [Mask RCNN](#mask-rcnn)
+    - [Mask R-CNN](#mask-r-cnn)
     - [YOLO — You Only Look Once](#yolo--you-only-look-once)
     - [Our decision](#our-decision)
-  - [Training a Mask RCNN model](#training-a-mask-rcnn-model)
+  - [Training a Mask R-CNN model](#training-a-mask-r-cnn-model)
 
 
 
@@ -93,6 +93,7 @@ As a team we decided to break down the learning into 3 steps, each of them had t
             
     <details>
     <summary>What can go wrong?</summary>
+    <br>
 
     **Pay attention to the udev rule**
 
@@ -134,14 +135,16 @@ As a team we decided to break down the learning into 3 steps, each of them had t
     `sudo chmod o+w /dev/bus/usb/00X/00Y`
 
     </details>
-            
+    <br>
+
     **Basic object recognition with the laptop camera**
 
     The following tutorial was very useful in setting up a basic image recognition and play around with it. Do not forget to select /usb_cam/image_raw to get the  https://sudonull.com/post/14732-Detection-and-recognition-of-objects-from-the-camera-in-ROS-using-the-package-find_object_2d
             
     <details>
     <summary>What can go wrong?</summary>
-    
+    <br>
+
     **E: Unable to locate package ros-kinetic-find-object-2d**
 
     You need to set up your sources.list and keys to get software from [packages.ros.org](http://packages.ros.org/). Following the instructions, you should be able to make it work.
@@ -222,13 +225,16 @@ At the end, you should be able to see the depth camera image using the rviz tool
 
 
 
-##### Subscriber node to the RealSense D435 camera
+### Subscriber node to the RealSense D435 camera
 
-We managed to get the messages sent by the camera topic, using ROS and converted the received image bits into an image view with the help of opencv. https://github.com/Robovison/RoboVision_Robot/blob/develop/src/CameraSubscriber.py
+We managed to get the messages sent by the camera topic, using ROS and converted the received image bits into an image view with the help of opencv. The node connects the ROS environment with the running D-435 camera, processes image data via inference and posts processed data to other ROS topics. It has an inner class called image_converter which is to do with the actual data processing and connection setup.
+https://github.com/Robovison/RoboVision_Robot/blob/develop/src/CameraSubscriber.py
+
+
 
 ## Object recognition
 
-The crate holds the items that the robot arm needs to pick and transfer in another place. In order for the system to know where to place the robot arm, it needs data on where the object is placed inside the crate. Firstly, to get the data from the camera regarding the object and its location, the system has to recognize which object to inspect. For this, object recognition is used to understand what is in the crate and to retrieve the location of each item.
+The robot has the task to pick a defined item from the crate that comes along on the conveyer belt. The crate holds the items that the robot arm needs to pick and transfer in another place. In order for the system to know where to place the robot arm, it needs data on where the object is placed inside the crate. Firstly, to get the data from the camera regarding the object and its location, the system has to recognize which object to inspect. For this, object recognition is used to understand what is in the crate and to retrieve the location of each item.
 
 In order to implement object recognition, we looked at the different approaches that there are available.
 
@@ -269,7 +275,7 @@ https://github.com/Robovison/RoboVision_Robot/blob/test/Python-Image-Converter/s
 After some time and some more experiencing with OpenCV, the team realized that a machine learning algorithm is needed in order to build and train a model to recognize different types of items.
 
 ### OpenCV with newer GPUs (3080)
-Our team experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found [here](https://github.com/Robovison/RoboVision_Robot/blob/documentation/handover/project_documentation/handover_documentation/installation_opencv_newGPU.md).
+Our team also experimented in using OpenCV with a newer video card, Nvidia 3080. It worked, we were able to use the library to do basic object detection. The installation guide can be found [here](https://github.com/Robovison/RoboVision_Robot/blob/documentation/handover/project_documentation/handover_documentation/installation_opencv_newGPU.md).
 
 ## Machine learning algorithms
 
@@ -287,47 +293,53 @@ R-CNN represents an improvement for the CNN method. It uses selective search to 
 
 ### Fast R-CNN
 
-The approach is similar to the R-CNN algorithm. But, instead of feeding the region proposals to the CNN, we feed the input image to the CNN to generate a convolutional feature map.
+The Fast R-CNN approach is similar to the R-CNN algorithm. But, instead of feeding the region proposals to the CNN, it feeds the input image to the CNN to generate a convolutional feature map.
 
-The reason “Fast R-CNN” is faster than R-CNN is because you don’t have to feed 2000 region proposals to the convolutional neural network every time. Instead, the convolution operation is done only once per image and a feature map is generated from it.
+The reason Fast R-CNN is faster than R-CNN is because you don’t have to feed 2000 region proposals to the convolutional neural network every time. Instead, the convolution operation is done only once per image and a feature map is generated from it.
 
 ### Faster R-CNN
 
 Similar to Fast R-CNN, the image is provided as an input to a convolutional network which provides a convolutional feature map. Instead of using selective search algorithm on the feature map to identify the region proposals, a separate network is used to predict the region proposals.
 
-Faster RCNN do detect small objects well since it has nine anchors in a single grid, however it fails to do real-time detection with its two step architecture.
+Faster R-CNN do detect small objects well since it has nine anchors in a single grid, however it fails to do real-time detection with its two step architecture.
 
 ![machine-learning-alg-comparison](Robovision/machine-learning-alg-comparison.png)
 
-### Mask RCNN
+### Mask R-CNN
 
-Mask RCNN is a deep neural network which has the goal to solve instance segmentation problem in machine learning. Instance Segmentation is the process of identifying each object inside an image at pixel level. This is the hardest task in computer vision compared to other sub types inside Image Segmentation. The other similar task can be:
+Mask R-CNN is a deep neural network which has the goal to solve instance segmentation problem in machine learning. Instance Segmentation is the process of identifying each object inside an image at pixel level. This is the hardest task in computer vision compared to other sub types inside Image Segmentation. The other similar task can be:
 
 1. Classification: Recognize that there is an object inside the image.
 2. Semantic Segmentation: Recognize the pixels that belong to the object.
 3. Object Detection: Recognize how many different objects are inside the image at different locations. Also, the overlapping objects are recognized.
 4. Instance Segmentation: Recognize that there are different objects at different locations and which pixels belong to which object.
 
-Mask RCNN , which stands for regional convolutional neural network, is working in two stages. In the first stage it scans the input image and it generates numerous different proposals on where an object might be located. Basically, it generates a ton of boxes in different places inside the image and passes them on. In the second stage, the proposals are analyzed, classified. Bounding boxes are  generated for each recognizes instance.
+Mask R-CNN , which stands for regional convolutional neural network, is working in two stages. In the first stage it scans the input image and it generates numerous different proposals on where an object might be located. Basically, it generates a ton of boxes in different places inside the image and passes them on. In the second stage, the proposals are analyzed, classified. Bounding boxes are  generated for each recognizes instance, as it is illustrated below.
+![mask_rcnn_bounding_boxes.jpeg](Robovision/mask_rcnn_bounding_boxes.jpeg)
 
-As an addition, Mask RCNN adds another layer on the defined object, a pixel level mask that helps differentiate between more objects. These stages are connected to the backbone structure, which usually is ResNet50 or ResNet101. The backbone structure is a convolutional neural network that has multiple layers: the first layers detects low-level features, such as edges or corners, and the last layers detecting detailed features which we recognize as objects.
+As an addition, Mask R-CNN adds another layer on the defined object, a pixel level mask that helps differentiate between more objects. These stages are connected to the backbone structure, which usually is ResNet50 or ResNet101. The backbone structure is a convolutional neural network that has multiple layers: the first layers detects low-level features, such as edges or corners, and the last layers detecting detailed features which we recognize as objects.
 
 ### YOLO — You Only Look Once
 
-YOLO or You Only Look Once is an object detection algorithm much different from the region based algorithms seen above. In YOLO a single convolutional network predicts the bounding boxes and the class probabilities for these boxes.
+YOLO or You Only Look Once is an object detection algorithm much different from the region based algorithms seen above. In YOLO, a single convolutional network predicts the bounding boxes and the class probabilities for these boxes.
 
-YOLO is orders of magnitude faster(45 frames per second) than other object detection algorithms. The limitation of YOLO algorithm is that it struggles with small objects within the image, for example it might have difficulties in detecting a flock of birds. This is due to the spatial constraints of the algorithm.
+YOLO in orders of magnitude is faster(45 frames per second) than other object detection algorithms. The limitation of YOLO algorithm is that it struggles with small objects within the image, for example it might have difficulties in detecting a flock of birds. This is due to the spatial constraints of the algorithm.
 
 ### Our decision
 
-The decision is to use Mask RCNN for our project, a decision that was heavily influenced by our use case. The team needed technology that can recognize, with high accuracy, between different items inside a crate. This process should be fast and reliable. The feature which adds a mask to every object recognized made our decision clear.
+The decision is to use Mask R-CNN for our project, a decision that was heavily influenced by our use case. The team needed technology that can recognize, with high accuracy, between different items inside a crate. This process should be fast and reliable. The feature which adds a mask to every object recognized made our decision clear.
 
 The other major framework that was considered by our team was YOLO, which is another fast and accurate real-time object detection system. The framework outputs only bounding boxes around the recognized objects. Since the crate is filled with different items in different orders the bounding boxes can easily overlap and make coordination of the robot arm harder. Thus, having a mask on each object makes it easier to calculate what the dimensions of the object are and its location.
 
-[Installation for Mask RCNN](installation_mask_rcnn.md)
+[Installation for Mask R-CNN](installation_mask_rcnn.md)
 
-## Training a Mask RCNN model
+## Training a Mask R-CNN model
 
-To use the model to recognize different types of objects, it has to be trained so it can learn the objects. For this we need a dataset with different images with the same object, but from different point of views. These images have to be annotated, basically draw out every object inside the image and label it. In order to annotate the dataset we used `https://www.makesense.ai/` and `https://gitlab.com/vgg/via`, both of them work with the same outputed structure, a JSON file with the labels, coordinates and other data. This JSON will be fed, along with the images, in our Mask RCNN algorithm to train the model. In our experiments we used coco weights to train and try out the algorithm. A good machine is needed for the training process, a good GPU helps a lot, be aware to setup the tensorflow to use the GPU! 
-Training a model can also be done in the cloud. Our research found that Amazon Web Services, Google Cloud and Floyd are companies that offer cloud training for additional costs at a fairly high speed.
+To use the model to recognize different types of objects, it has to be trained so it can learn the objects. For this we need a dataset with different images with the same object, but from different point of views. These images have to be annotated, basically draw out every object inside the image and label it. In order to annotate the dataset we used `https://www.makesense.ai/` and `https://gitlab.com/vgg/via`, both of them work with the same output structure, a JSON file with the labels, coordinates and other data. This JSON will be fed, along with the images, in our Mask R-CNN algorithm to train the model. 
+The image below shows a recognzied object with the output mask. 
+![Mask on 3D shape](Robovision/mask_3Dshape.jpeg)
 
+In our experiments we used coco weights to train and try out the algorithm. A good machine is needed for the training process, a good GPU helps a lot, be aware to setup the tensorflow to use the GPU! A useful tutorial explaining how the mask R-CNN works and how to create and train your dataset, can be found [here](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46).
+
+
+Training a model can also be done in the cloud. Our research found that Amazon Web Services, Google Cloud and Floyd are companies that offer cloud training for additional costs at a fairly high speed, but you can also test it out with the free trial they are offering.
